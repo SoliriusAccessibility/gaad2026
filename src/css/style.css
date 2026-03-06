@@ -140,3 +140,30 @@ body {
 p {
   line-height: 1.5;
 }
+
+.img-container {
+  width: 6em;
+  height: 3em;
+  margin-bottom: 1em;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+}
+
+nav li {
+  display: flex;
+  display: inline-block;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.header {
+  align-items: center;
+  border-bottom: 1px solid teal;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 130%;
+  justify-content: space-between;
+}
