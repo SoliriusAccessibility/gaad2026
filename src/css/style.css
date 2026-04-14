@@ -198,3 +198,11 @@ h3 {
   font-size: .75em;
   margin: 0em;
 }
+
+@media (prefers-color-scheme: dark) {
+  
+  .highlight {
+  background-color: #434343;
+}
+
+}
