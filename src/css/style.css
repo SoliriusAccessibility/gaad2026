@@ -129,7 +129,7 @@ svg {
 
 body {
   font-family: sans-serif;
-  font-size: 125%;
+  font-size: 1.35em;
   max-width: 50em;
   margin-left: auto;
   margin-right: auto;
@@ -166,4 +166,35 @@ nav li {
   flex-wrap: wrap;
   font-size: 130%;
   justify-content: space-between;
+}
+
+.presenters {
+  font-weight: 600;
+  margin-bottom: .5em;
+}
+
+.highlight {
+  background-color: #eee;
+  padding: 1em 1em 1em 2em;
+  margin-bottom: 1em;
+  border-radius: .5em;
+  border-left: 8px solid #0097a7;
+}
+
+h3 {
+  margin-bottom: .25em;
+}
+
+.highlight p:not(.presenters) {
+  margin: 0em;
+}
+
+.time {
+  background-color: #23548F;
+  padding: .25em .5em .1em .5em;
+  border-radius: 1em;
+  max-width: max-content;
+  color: #eee;
+  font-size: .75em;
+  margin: 0em;
 }
