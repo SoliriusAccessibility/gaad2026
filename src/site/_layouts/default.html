@@ -2,9 +2,16 @@
 <html xml:lang="en" lang="en">
     {% include "head.html" %}
     <body>
+          <div class="wrapper">
+        <a href="#main" tabindex="0" class="skip-to-content">Skip to main content</a>
       {% include "siteheader.html" %}
-        <h1>{{ title }}</h1>
-        {{ content | safe }}
+           <main id="main" tabindex="-1">
+                    <h1>{{ title }}</h1>
+            {{ content | safe }}
+            {% if cta %}
+            {% include "call-to-action.html" %}
+            {% endif %}
+        </main>
         <style>
           @media screen and (prefers-color-scheme: dark) {
             :where(a:link) {color: #9e9eff;}
