@@ -32,28 +32,32 @@ permalink: register.html
     document.getElementById('register-form').addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        const btn = document.getElementById('submit-btn');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
 
         try {
             await fetch(ENDPOINT, {
                 method: 'POST',
-                mode: 'no-cors', // required for Apps Script
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email })
             });
 
-            // no-cors means we can't read the response, so we trust it worked
             const expires = new Date(Date.now() + 30 * 864e5).toUTCString();
             document.cookie = `registered=true; expires=${expires}; path=/`;
-
             document.getElementById('register-form').style.display = 'none';
-            document.getElementById('success-msg').style.display = 'block';
-
-            setTimeout(() => window.location.replace('/'), 5000);
+            document.getElementById('success-msg').classList.remove('hidden');
+            setTimeout(() => window.location.replace('/'), 8000);
 
         } catch (err) {
-            document.getElementById('error-msg').style.display = 'block';
+            // Re-enable button if something goes wrong
+            btn.disabled = false;
+            btn.textContent = 'Register';
+            document.getElementById('error-msg').classList.remove('hidden');
         }
     });
 </script>
