@@ -1,0 +1,53 @@
+---
+title: Register your interest for Solirius GAAD 2026
+description: This is the about page
+layout: register.html
+permalink: register.html
+---
+
+<p>Register your interest in attending Solirius Global Accessibility Awareness Day at the Nova Office in London.</p>
+
+<form id="register-form">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email</label>
+    <div class="hint">Please register with your work email address</div>
+    <input type="email" id="email" name="email" required>
+
+    <button type="submit">Register</button>
+    <p id="error-msg" style="display:none">Something went wrong, please try again.</p>
+</form>
+<p id="success-msg" style="display:none">Thanks! Taking you to the site...</p>
+
+<script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxVk6nATtQOXJU-YrWrze3vvgy-2S_6LiZxwgxWANGz0yhkmBRv8GQsDbzHT07zc7Gq/exec';
+
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+
+        try {
+            await fetch(ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors', // required for Apps Script
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email })
+            });
+
+            // no-cors means we can't read the response, so we trust it worked
+            const expires = new Date(Date.now() + 30 * 864e5).toUTCString();
+            document.cookie = `registered=true; expires=${expires}; path=/`;
+
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('success-msg').style.display = 'block';
+
+            setTimeout(() => window.location.replace('/'), 1500);
+
+        } catch (err) {
+            document.getElementById('error-msg').style.display = 'block';
+        }
+    });
+</script>

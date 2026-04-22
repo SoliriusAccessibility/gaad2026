@@ -303,3 +303,10 @@ h3 {
   filter: contrast(1) brightness(1) invert(1) saturate(0) hue-rotate(120deg);
 }
    }
+
+  #register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 15rem;
+}
