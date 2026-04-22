@@ -310,6 +310,12 @@ input {
   padding: .5rem;
 }
 
+input[type="radio"] {
+  accent-color: #23548F;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 .email-entry, .name-entry {
   display: flex;
   flex-direction: column;
@@ -329,7 +335,12 @@ button {
   border-radius: 5px;
   overflow: visible;
   font-size: 100%;
-  max-width: 5em;
+  max-width: 7.5em;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 button:hover {
@@ -345,6 +356,27 @@ button:hover {
     border-radius: .5em;
     margin-bottom: 1em;
     padding: 1em 1em 1em 2em;
+}
+
+.hidden {
+  display: none;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: .5rem;
+}
+
+fieldset legend {
+  margin-bottom: .75rem;
 }
 
 
