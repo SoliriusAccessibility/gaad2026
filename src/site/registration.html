@@ -5,7 +5,11 @@ layout: register.html
 permalink: register.html
 ---
 
-<p>Register your interest in attending Solirius Global Accessibility Awareness Day at the Nova Office in London.</p>
+<p>Register your interest in attending the Solirius Global Accessibility Awareness Day event on 18th May at the Nova
+    office
+    in London. </p>
+
+<p>In-person spaces are subject to availability as we are prioritising capacity for our client guests.</p>
 
 <form id="register-form" class="registration">
     <div class="name-entry">
@@ -19,10 +23,21 @@ permalink: register.html
         <input type="email" id="email" name="email" required autocomplete="email">
     </div>
 
-    <button type="submit">Register</button>
+    <fieldset>
+        <legend>How would you like to attend?</legend>
+        <label>
+            <input type="radio" name="attendance" value="in-person"> In person
+        </label>
+        <label>
+            <input type="radio" name="attendance" value="online"> Online
+        </label>
+
+    </fieldset>
+
+    <button type="submit" id="submit-btn">Register</button>
     <p id="error-msg" style="display:none">Something went wrong, please try again.</p>
 </form>
-<p id="success-msg" aria-live="polite" aria-atomic="true" style="display:none">
+<p id="success-msg" aria-live="polite" aria-atomic="true" class="hidden">
     Thank you for signing up! Taking you to the site...
 </p>
 
@@ -38,23 +53,23 @@ permalink: register.html
 
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
+        const attendance = document.querySelector('input[name="attendance"]:checked')?.value || 'not specified';
 
         try {
             await fetch(ENDPOINT, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email })
+                body: JSON.stringify({ name, email, attendance })
             });
 
             const expires = new Date(Date.now() + 30 * 864e5).toUTCString();
             document.cookie = `registered=true; expires=${expires}; path=/`;
             document.getElementById('register-form').style.display = 'none';
             document.getElementById('success-msg').classList.remove('hidden');
-            setTimeout(() => window.location.replace('/'), 8000);
+            setTimeout(() => window.location.replace('/'), 4000);
 
         } catch (err) {
-            // Re-enable button if something goes wrong
             btn.disabled = false;
             btn.textContent = 'Register';
             document.getElementById('error-msg').classList.remove('hidden');
