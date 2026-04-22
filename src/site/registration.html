@@ -7,18 +7,24 @@ permalink: register.html
 
 <p>Register your interest in attending Solirius Global Accessibility Awareness Day at the Nova Office in London.</p>
 
-<form id="register-form">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
+<form id="register-form" class="registration">
+    <div class="name-entry">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+    </div>
 
-    <label for="email">Email</label>
-    <div class="hint">Please register with your work email address</div>
-    <input type="email" id="email" name="email" required>
+    <div class="email-entry">
+        <label for="email">Email</label>
+        <div class="hint">Please register with your work email address</div>
+        <input type="email" id="email" name="email" required autocomplete="email">
+    </div>
 
     <button type="submit">Register</button>
     <p id="error-msg" style="display:none">Something went wrong, please try again.</p>
 </form>
-<p id="success-msg" style="display:none">Thanks! Taking you to the site...</p>
+<p id="success-msg" aria-live="polite" aria-atomic="true" style="display:none">
+    Thank you for signing up! Taking you to the site...
+</p>
 
 <script>
     const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxVk6nATtQOXJU-YrWrze3vvgy-2S_6LiZxwgxWANGz0yhkmBRv8GQsDbzHT07zc7Gq/exec';
@@ -44,7 +50,7 @@ permalink: register.html
             document.getElementById('register-form').style.display = 'none';
             document.getElementById('success-msg').style.display = 'block';
 
-            setTimeout(() => window.location.replace('/'), 1500);
+            setTimeout(() => window.location.replace('/'), 5000);
 
         } catch (err) {
             document.getElementById('error-msg').style.display = 'block';
