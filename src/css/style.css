@@ -389,7 +389,7 @@ fieldset legend {
   color: #eee;
 }
 
-.logo {
+.logo, img {
   filter: contrast(1) brightness(1) invert(1) saturate(0) hue-rotate(120deg);
 }
 
