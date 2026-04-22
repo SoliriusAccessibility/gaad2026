@@ -396,4 +396,8 @@ fieldset legend {
 input {
   border-color: #0097a7;
 }
+
+input[type="radio"] {
+  accent-color: #0097a7;
+}
    }
