@@ -31,7 +31,12 @@ pre,
 
 ul,
 ol {
-  padding-left: 0;
+  padding-left: 1.5em;
+}
+
+li {
+    max-width: 50em;
+  line-height: 1.5;
 }
 
 pre,
@@ -153,23 +158,23 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-max-width: 20em;
+max-width: 18em;
 }
 
 h1 {
-  font-size:3.815rem;
+  font-size:2.986rem;
 }
 
 h2 {
-  font-size:3.052rem;
+  font-size:2.488rem;
 }
 
 h3 {
-  font-size:2.441rem;
+  font-size:2.074rem;
 }
 
 h4 {
-  font-size:1.953remrem;
+  font-size:1.728rem;
 }
 
 p {
@@ -308,7 +313,7 @@ h3 {
   flex-direction: column;
   gap: 1.25rem;
   max-width: 30rem;
-  padding: 1em;
+  padding: 1.5em;
 }
 
 input {
@@ -365,6 +370,14 @@ button:hover {
    padding: 1em 1em 1em 2em;
  }
 
+ #error-msg {
+   background-color: #ff8279;
+   border-left: 8px solid #610808;
+   border-radius: .5em;
+   margin-bottom: 1em;
+   padding: 1em 1em 1em 2em;
+ }
+
 .hidden {
   display: none;
 }
@@ -385,6 +398,36 @@ fieldset label {
 fieldset legend {
   margin-bottom: .75rem;
 }
+
+.notice {
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  width: 1em;
+  height: 1em;
+}
+
+.checkbox-item {
+  display: flex;
+align-items: center;
+gap: .5em;
+}
+
+.back {
+  margin-top: 2em;
+  display: flex;
+  align-items: center;
+  gap: .25em;
+}
+
+.back span {
+  display: inline-block;
+  line-height: 1;
+  color: inherit;
+    transform: translateY(-2px);
+}
+
 
 @media (prefers-color-scheme: dark) {  
   .highlight, .profile, #register-form {
