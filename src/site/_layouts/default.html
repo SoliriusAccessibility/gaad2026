@@ -3,8 +3,9 @@
 {% include "head.html" %}
 <script>
   const registered = document.cookie.split(';').some(c => c.trim().startsWith('registered='));
-  const onRegisterPage = window.location.pathname.startsWith('/register');
-  if (!registered && !onRegisterPage) {
+  const path = window.location.pathname;
+  const allowed = ['/register/', '/privacy.html'];
+  if (!registered && !allowed.some(p => path.startsWith(p))) {
     window.location.replace('/register/');
   }
 </script>

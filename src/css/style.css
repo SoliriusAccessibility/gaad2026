@@ -31,7 +31,12 @@ pre,
 
 ul,
 ol {
-  padding-left: 0;
+  padding-left: 1.5em;
+}
+
+li {
+    max-width: 50em;
+  line-height: 1.5;
 }
 
 pre,
@@ -153,23 +158,23 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-max-width: 20em;
+max-width: 18em;
 }
 
 h1 {
-  font-size:3.815rem;
+  font-size:2.986rem;
 }
 
 h2 {
-  font-size:3.052rem;
+  font-size:2.488rem;
 }
 
 h3 {
-  font-size:2.441rem;
+  font-size:2.074rem;
 }
 
 h4 {
-  font-size:1.953remrem;
+  font-size:1.728rem;
 }
 
 p {
@@ -209,10 +214,16 @@ nav ul {
 
 .skip-to-content:focus {
   transform: translateY(0%);
+  z-index: 100;
 }
 
 main {
   margin-bottom: 2em;
+}
+
+main:focus {
+  box-shadow: none;
+  outline: none;
 }
 
   .footer {
@@ -280,28 +291,29 @@ h3 {
   }
 
 .pfp {
-  background-color: #3498db;
+  align-self: center;
+  aspect-ratio: 1 / 1;
   border-radius: 25%;
   flex-shrink: 0;
-  height: 7em;
-  width: 7em;
+  object-fit: cover;
+  width: 12em;
 }
 
 .headline {
   align-items: center;
   display: flex;
-  gap: 4rem;
+  gap: 2rem;
   justify-content: flex-start;
 }
 
 .registration {
   background-color:#eee;
+  border-radius: .5em;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   max-width: 30rem;
-  padding: 1em;
-  border-radius: .5em;
+  padding: 1.5em;
 }
 
 input {
@@ -312,8 +324,8 @@ input {
 
 input[type="radio"] {
   accent-color: #23548F;
-  width: 1.25rem;
   height: 1.25rem;
+  width: 1.25rem;
 }
 
 .email-entry, .name-entry {
@@ -328,35 +340,43 @@ input[type="radio"] {
 
 button {
   background-color: #3498db;
-  color: #000;
   border: 1px solid #3498db;
-  box-shadow: 0 3px 0 #006394;
-  padding: .5em;
   border-radius: 5px;
-  overflow: visible;
+  box-shadow: 0 3px 0 #006394;
+  color: #000;
   font-size: 100%;
   max-width: 7.5em;
+  overflow: visible;
+  padding: .5em;
 }
 
 button:disabled {
-  opacity: 0.6;
   cursor: not-allowed;
+  opacity: 0.6;
 }
 
 button:hover {
   background-color: #23548F;
-  color: #eee;
   border: 1px solid #23548F;
-    box-shadow: 0 3px 0 #0090d8;
+  box-shadow: 0 3px 0 #0090d8;
+  color: #eee;
 }
 
 #success-msg {
    background-color: #7cffac;
-    border-left: 8px solid #086114;
-    border-radius: .5em;
-    margin-bottom: 1em;
-    padding: 1em 1em 1em 2em;
-}
+   border-left: 8px solid #086114;
+   border-radius: .5em;
+   margin-bottom: 1em;
+   padding: 1em 1em 1em 2em;
+ }
+
+ #error-msg {
+   background-color: #ff8279;
+   border-left: 8px solid #610808;
+   border-radius: .5em;
+   margin-bottom: 1em;
+   padding: 1em 1em 1em 2em;
+ }
 
 .hidden {
   display: none;
@@ -364,19 +384,48 @@ button:hover {
 
 fieldset {
   border: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 fieldset label {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 1rem;
   margin-bottom: .5rem;
 }
 
 fieldset legend {
   margin-bottom: .75rem;
+}
+
+.notice {
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  width: 1em;
+  height: 1em;
+}
+
+.checkbox-item {
+  display: flex;
+align-items: center;
+gap: .5em;
+}
+
+.back {
+  margin-top: 2em;
+  display: flex;
+  align-items: center;
+  gap: .25em;
+}
+
+.back span {
+  display: inline-block;
+  line-height: 1;
+  color: inherit;
+    transform: translateY(-2px);
 }
 
 
@@ -389,7 +438,7 @@ fieldset legend {
   color: #eee;
 }
 
-.logo, img {
+.logo {
   filter: contrast(1) brightness(1) invert(1) saturate(0) hue-rotate(120deg);
 }
 
@@ -399,5 +448,9 @@ input {
 
 input[type="radio"] {
   accent-color: #0097a7;
+}
+
+#success-msg {
+  color: #000;
 }
    }

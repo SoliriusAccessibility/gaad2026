@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+{% include "head.html" %}
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=arrow_back" />
+
+<body>
+    <div class="wrapper">
+        <a href="#main" tabindex="0" class="skip-to-content">Skip to main content</a>
+
+        <div id="unregistered-header">
+            {% include "registerheader.html" %}
+            <div class="back">
+                <span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+                <a href="/registration/" class="back-link">Back</a>
+            </div>
+        </div>
+
+        <div id="registered-header" class="hidden">
+            {% include "siteheader.html" %}
+        </div>
+
+        <main id="main" tabindex="-1">
+            <h1>{{ title }}</h1>
+            {{ content | safe }}
+            {% if cta %}
+            {% include "call-to-action.html" %}
+            {% endif %}
+        </main>
+
+        {% include "footer.html" %}
+
+        <style>
+            @media screen and (prefers-color-scheme: dark) {
+                :where(a:link) {
+                    color: #9e9eff;
+                }
+
+                :where(a:visited) {
+                    color: #d0adf0;
+                }
+            }
+        </style>
+
+        <script>
+            const registered = document.cookie.split(';').some(c => c.trim().startsWith('registered='));
+            if (registered) {
+                document.getElementById('unregistered-header').classList.add('hidden');
+                document.getElementById('registered-header').classList.remove('hidden');
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>
