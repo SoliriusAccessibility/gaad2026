@@ -10,7 +10,8 @@ backLink: true
     office
     in London. </p>
 
-<p>Important Note: In-person spaces are subject to availability as we are prioritising capacity for our client guests.
+<p>Important note: In-person spaces are subject to availability. We will email you and let you know if an in-person
+    space is available.
 </p>
 
 <p>If you register in person, but there are no spaces you can still attend our online sessions.</p>
@@ -56,6 +57,30 @@ backLink: true
 <script>
     const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxVk6nATtQOXJU-YrWrze3vvgy-2S_6LiZxwgxWANGz0yhkmBRv8GQsDbzHT07zc7Gq/exec';
 
+    // Restore fields on page load
+    document.getElementById('name').value = sessionStorage.getItem('reg-name') || '';
+    document.getElementById('email').value = sessionStorage.getItem('reg-email') || '';
+
+    const savedAttendance = sessionStorage.getItem('reg-attendance');
+    if (savedAttendance) {
+        const radio = document.querySelector(`input[name="attendance"][value="${savedAttendance}"]`);
+        if (radio) radio.checked = true;
+    }
+
+    // Save fields on input
+    document.getElementById('name').addEventListener('input', (e) => {
+        sessionStorage.setItem('reg-name', e.target.value);
+    });
+    document.getElementById('email').addEventListener('input', (e) => {
+        sessionStorage.setItem('reg-email', e.target.value);
+    });
+    document.querySelectorAll('input[name="attendance"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            sessionStorage.setItem('reg-attendance', e.target.value);
+        });
+    });
+
+    // Form submission
     document.getElementById('register-form').addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -74,6 +99,11 @@ backLink: true
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, attendance })
             });
+
+            // Clear saved form data on success
+            sessionStorage.removeItem('reg-name');
+            sessionStorage.removeItem('reg-email');
+            sessionStorage.removeItem('reg-attendance');
 
             const expires = new Date(Date.now() + 30 * 864e5).toUTCString();
             document.cookie = `registered=true; expires=${expires}; path=/`;
